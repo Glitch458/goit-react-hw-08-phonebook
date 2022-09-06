@@ -1,4 +1,3 @@
-import styles from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilterValue } from 'redux/filter/slice';
 
@@ -7,10 +6,10 @@ const Filter = () => {
   const filterValue = useSelector(state => state.filterValue);
 
   return (
-    <label className={styles.label}>
+    <label className="form">
       Find contacts by name
       <input
-        className={styles.input}
+        className="input"
         type="text"
         name="filter"
         value={filterValue}

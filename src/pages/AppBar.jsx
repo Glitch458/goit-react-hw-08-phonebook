@@ -10,17 +10,19 @@ const AppBar = () => {
   };
 
   return (
-    <header>
+    <>
       {isLoggedIn && (
-        <div>
-          <span>Welcome, {user.name}</span>
-          <button type="button" onClick={handleLogout}>
-            LogOut
-          </button>
-        </div>
+        <header className="header">
+          <h1>Phonebook</h1>
+          <div className="welcome">
+            <span>Welcome, {user.name}</span>
+            <button className="button" type="button" onClick={handleLogout}>
+              LogOut
+            </button>
+          </div>
+        </header>
       )}
-      <hr />
-    </header>
+    </>
   );
 };
 

@@ -39,11 +39,12 @@ const LoginPage = () => {
   const { token } = useSelector(state => state.auth);
 
   return (
-    <>
-      <form onSubmit={handleFormSubmit}>
+    <div className="login">
+      <form className="form" onSubmit={handleFormSubmit}>
         <label>
           Email
           <input
+            className="input"
             type="email"
             name="email"
             required
@@ -54,6 +55,7 @@ const LoginPage = () => {
         <label>
           Password
           <input
+            className="input"
             type="password"
             name="password"
             required
@@ -61,15 +63,18 @@ const LoginPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit" disabled={isLoading}>
+        <button className="button" type="submit" disabled={isLoading}>
           LogIn
         </button>
+        <p>
+          Have no account?{' '}
+          <Link className="link" to="/register">
+            Sign Up
+          </Link>
+        </p>
       </form>
-      <p>
-        Have no account? <Link to="/register">Sign Up</Link>
-      </p>
       {token && <Navigate to="/contacts">Contacts</Navigate>}
-    </>
+    </div>
   );
 };
 

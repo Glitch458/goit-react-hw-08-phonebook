@@ -5,9 +5,14 @@ const ContactItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   return (
-    <li>
-      {name}: {number}
-      <button type="button" onClick={() => deleteContact(id)}>
+    <li className="contact">
+      <span className="name">{name + ':'}</span>
+      <span className="number">{number}</span>
+      <button
+        className="button contact-button"
+        type="button"
+        onClick={() => deleteContact(id)}
+      >
         {isDeleting ? 'Deleting...' : 'Delete'}
       </button>
     </li>

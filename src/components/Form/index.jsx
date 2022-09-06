@@ -1,21 +1,20 @@
-import { useState } from "react";
-import styles from "./Form.module.css";
-import { useGetContactQuery } from "redux/ContactApi";
-import { useAddContactMutation } from "redux/ContactApi";
+import { useState } from 'react';
+import { useGetContactQuery } from 'redux/ContactApi';
+import { useAddContactMutation } from 'redux/ContactApi';
 
 const Form = () => {
   const { data } = useGetContactQuery();
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
   const [addContact, { isLoading: isAdding }] = useAddContactMutation();
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = evt => {
     const { name, value } = evt.target;
     switch (name) {
-      case "name":
+      case 'name':
         setName(value);
         break;
-      case "number":
+      case 'number':
         setNumber(value);
         break;
       default:
@@ -24,21 +23,21 @@ const Form = () => {
   };
 
   const resetForm = () => {
-    setName("");
-    setNumber("");
+    setName('');
+    setNumber('');
   };
 
-  const handleFormSubmit = (evt) => {
+  const handleFormSubmit = evt => {
     evt.preventDefault();
     const newContact = {
       name,
       number,
     };
     const checkNewName = data.find(
-      (contact) => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
     if (checkNewName) {
-      alert(newContact.name + " is already in contacts");
+      alert(newContact.name + ' is already in contacts');
       return;
     }
 
@@ -47,12 +46,12 @@ const Form = () => {
   };
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleFormSubmit}>
+    <section className="section">
+      <form className="form" onSubmit={handleFormSubmit}>
         <label>
           Name
           <input
-            className={styles.input}
+            className="input"
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -65,7 +64,7 @@ const Form = () => {
         <label>
           Number
           <input
-            className={styles.input}
+            className="input"
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -75,9 +74,11 @@ const Form = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">{isAdding ? "Adding..." : "Add contact"}</button>
+        <button className="button" type="submit">
+          {isAdding ? 'Adding...' : 'Add contact'}
+        </button>
       </form>
-    </>
+    </section>
   );
 };
 

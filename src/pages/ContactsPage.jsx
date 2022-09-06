@@ -5,11 +5,12 @@ import Filter from 'components/Filter';
 const ContactsPage = () => {
   return (
     <div>
-      <h1>Phonebook</h1>
       <Form />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+      <section className="section">
+        <h2>Contacts</h2>
+        <Filter />
+        <ContactList />
+      </section>
     </div>
   );
 };

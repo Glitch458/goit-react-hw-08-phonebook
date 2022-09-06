@@ -1,5 +1,4 @@
 import ContactItem from 'components/ContactItem';
-import styles from './ContactList.module.css';
 import { useSelector } from 'react-redux/es/exports';
 import { useGetContactQuery } from 'redux/ContactApi';
 
@@ -14,7 +13,7 @@ const ContactList = () => {
 
   return (
     <>
-      <ul className={styles.list}>
+      <ul className="list">
         {data &&
           filteredContacts().map(({ name, number, id }) => (
             <ContactItem key={id} name={name} number={number} id={id} />
