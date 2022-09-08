@@ -4,8 +4,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useLoginMutation } from 'redux/auth/authAPI';
 
 const LoginPage = () => {
-  const [login, status] = useLoginMutation();
-  const { isLoading } = status;
+  const [login, { isLoading }] = useLoginMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,16 +24,10 @@ const LoginPage = () => {
     }
   };
 
-  const resetForm = () => {
-    setEmail('');
-    setPassword('');
-  };
-
   const handleFormSubmit = evt => {
     evt.preventDefault();
     const credentials = { email, password };
     login(credentials);
-    resetForm();
   };
   const { token } = useSelector(state => state.auth);
 

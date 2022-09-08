@@ -32,6 +32,7 @@ button {
 
 .header {
   background-color: rgb(200, 210, 255);
+  border-radius: 5px;
   display: flex;
   padding: 5px;
   justify-content: flex-end;
@@ -133,4 +134,8 @@ button {
   background-color: #fff;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.nf {
+  margin-bottom: 10px;
 }

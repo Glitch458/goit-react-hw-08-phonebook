@@ -1,10 +1,13 @@
 import ContactItem from 'components/ContactItem';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import { useGetContactQuery } from 'redux/ContactApi';
 
 const ContactList = () => {
   const filterValue = useSelector(state => state.filterValue);
-  const { data } = useGetContactQuery();
+  const { data, refetch } = useGetContactQuery();
+
+  useEffect(() => refetch(), [refetch]);
 
   const filteredContacts = () =>
     data.filter(contact =>

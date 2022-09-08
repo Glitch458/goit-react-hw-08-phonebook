@@ -28,12 +28,6 @@ const RegisterPage = () => {
     }
   };
 
-  const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
-
   const handleFormSubmit = evt => {
     evt.preventDefault();
     const newUser = {
@@ -42,7 +36,6 @@ const RegisterPage = () => {
       password,
     };
     register(newUser);
-    resetForm();
   };
 
   return (
@@ -85,7 +78,7 @@ const RegisterPage = () => {
           SignUp
         </button>
       </form>
-      {isSuccess && <Navigate to="/" />}
+      {isSuccess && <Navigate to="/contacts" />}
     </div>
   );
 };
