@@ -31,6 +31,8 @@ export const authApi = createApi({
         url: '/login',
         method: 'POST',
         body: payload,
+        validateStatus: (response, result) =>
+          response.status === 400 ? alert(response.statusText) : result,
       }),
       invalidatesTags: ['Auth'],
     }),
